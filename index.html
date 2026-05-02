@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1.0, viewport-fit=cover">
+    <title>AI工具箱 - 发现好用的AI工具</title>
+    <style>
+        /* 全局重置与变量 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        /* 科技感渐变背景 */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 头部样式 */
+        .site-header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #667eea;
+        }
+
+        /* 分类标签 */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 32px 0 24px;
+        }
+
+        .category-btn {
+            padding: 8px 20px;
+            border: none;
+            background: #f1f5f9;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        /* 卡片网格 */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        /* 卡片样式 */
+        .tool-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .tool-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #1e293b;
+        }
+
+        .tool-name:hover {
+            color: #667eea;
+        }
+
+        .tool-desc {
+            color: #475569;
+            font-size: 0.85rem;
+            margin: 12px 0;
+            line-height: 1.5;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+        }
+
+        .visit-btn {
+            background: #f1f5f9;
+            padding: 6px 16px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            color: #475569;
+            transition: all 0.2s;
+        }
+
+        .visit-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .copy-link {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            transition: color 0.2s;
+        }
+
+        .copy-link:hover {
+            color: #667eea;
+        }
+
+        /* 统计与页脚 */
+        .stats {
+            text-align: center;
+            padding: 24px;
+            background: white;
+            border-radius: 20px;
+            margin: 24px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px 0;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .search-box {
+                max-width: 100%;
+            }
+            .categories {
+                justify-content: center;
+            }
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="/">AI工具箱</a>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索工具、关键词...">
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">工具库</a>
+                <a href="#">关于</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="categories" id="categories">
+            <button class="category-btn active" data-category="all">全部</button>
+            <button class="category-btn" data-category="chat">AI对话</button>
+            <button class="category-btn" data-category="image">AI绘画</button>
+            <button class="category-btn" data-category="video">AI视频</button>
+            <button class="category-btn" data-category="writing">AI写作</button>
+            <button class="category-btn" data-category="code">AI编程</button>
+        </div>
+
+        <div class="tools-grid" id="toolsGrid"></div>
+
+        <div class="stats" id="stats">
+            🛠️ 共收录 <span id="totalCount">0</span> 个AI工具 · 持续更新中
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 AI工具箱 | 发现好用的AI工具</p>
+        </div>
+    </footer>
+
+    <script>
+        // 工具数据
+        const toolsData = [
+            { name: "DeepSeek", category: "chat", desc: "深度求索AI助手，支持超长上下文和联网搜索，完全免费。", url: "https://chat.deepseek.com", icon: "🤖" },
+            { name: "Midjourney", category: "image", desc: "顶尖AI绘画工具，以艺术感和细节著称。", url: "https://www.midjourney.com", icon: "🎨" },
+            { name: "Runway", category: "video", desc: "AI视频编辑和生成工具，让创意动起来。", url: "https://runwayml.com", icon: "🎬" },
+            { name: "Notion AI", category: "writing", desc: "集成在Notion中的AI写作助手，帮助整理思路和内容创作。", url: "https://www.notion.so", icon: "📝" },
+            { name: "GitHub Copilot", category: "code", desc: "AI编程助手，实时推荐代码。", url: "https://github.com/features/copilot", icon: "💻" },
+            { name: "Claude", category: "chat", desc: "Anthropic开发的AI助手，擅长长文本处理和安全对话。", url: "https://claude.ai", icon: "🧠" },
+            { name: "Stable Diffusion", category: "image", desc: "开源的AI绘画模型，可本地部署。", url: "https://stability.ai", icon: "🖼️" },
+            { name: "剪映", category: "video", desc: "抖音官方视频剪辑工具，集成AI字幕和特效。", url: "https://www.capcut.cn", icon: "✂️" },
+            { name: "Jasper", category: "writing", desc: "AI内容生成平台，适合营销文案和博客写作。", url: "https://www.jasper.ai", icon: "✍️" },
+            { name: "通义千问", category: "chat", desc: "阿里云推出的AI问答助手。", url: "https://tongyi.aliyun.com", icon: "💬" },
+            { name: "文心一言", category: "chat", desc: "百度研发的知识增强大语言模型。", url: "https://yiyan.baidu.com", icon: "💡" },
+            { name: "Kimi", category: "chat", desc: "月之暗面推出的AI助手，支持超长文本处理。", url: "https://kimi.moonshot.cn", icon: "🌟" }
+        ];
+
+        let currentCategory = "all";
+        let currentSearchTerm = "";
+
+        function renderTools() {
+            let filtered = toolsData;
+            if (currentCategory !== "all") {
+                filtered = filtered.filter(tool => tool.category === currentCategory);
+            }
+            if (currentSearchTerm) {
+                const term = currentSearchTerm.toLowerCase();
+                filtered = filtered.filter(tool =>
+                    tool.name.toLowerCase().includes(term) ||
+                    tool.desc.toLowerCase().includes(term)
+                );
+            }
+
+            const grid = document.getElementById('toolsGrid');
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div style="text-align:center; padding:60px; grid-column:1/-1;">🔍 没有找到相关工具，试试其他关键词吧~</div>';
+                document.getElementById('totalCount').innerText = filtered.length;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(tool => `
+                <div class="tool-card">
+                    <div class="card-header">
+                        <div class="tool-icon">${tool.icon}</div>
+                        <a href="${tool.url}" class="tool-name" target="_blank" rel="noopener noreferrer">${tool.name}</a>
+                    </div>
+                    <div class="tool-desc">${tool.desc}</div>
+                    <div class="card-footer">
+                        <a href="${tool.url}" class="visit-btn" target="_blank" rel="noopener noreferrer">访问官网 →</a>
+                        <button class="copy-link" data-url="${tool.url}">📋 复制链接</button>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('totalCount').innerText = filtered.length;
+
+            // 绑定复制链接事件
+            document.querySelectorAll('.copy-link').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const url = this.getAttribute('data-url');
+                    copyToClipboard(url);
+                });
+            });
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('链接已复制到剪贴板');
+            }).catch(() => {
+                alert('复制失败，请手动复制');
+            });
+        }
+
+        function init() {
+            renderTools();
+
+            // 分类按钮事件
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentCategory = this.getAttribute('data-category');
+                    renderTools();
+                });
+            });
+
+            // 搜索事件
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function(e) {
+                currentSearchTerm = e.target.value;
+                renderTools();
+            });
+        }
+
+        init();
+    </script>
+</body>
+</html>
