@@ -116,9 +116,14 @@
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
+            gap: 30px;
             margin-bottom: 48px;
-        }
+@media (max-width: 768px) {
+    .tools-grid {
+        /* 在手机上可以适当缩小间距 */
+        gap: 16px;
+    }
+}
 
         /* 卡片样式 */
         .tool-card {
@@ -138,15 +143,20 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
         .tool-icon-img {
             width: 48px;
             height: 48px;
+            flex-shrink: 0;
             border-radius: 16px;
             object-fit: cover;
             background-color: #f1f5f9;
+
+        }
+ .visit-btn {
+    border-radius: 40px; /* 把按钮也改成胶囊形状 */
         }
 
         .tool-name {
@@ -175,17 +185,18 @@
         .visit-btn {
             display: inline-block;
             background: #f1f5f9;
-            padding: 6px 16px;
+            padding: 8px 24px;
             border-radius: 30px;
             text-decoration: none;
             font-size: 0.8rem;
             color: #475569;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
         }
 
         .visit-btn:hover {
-            background: #667eea;
+            background: #5865f2;
             color: white;
+            transform: translateY(-2px);
         }
 
         .stats {
@@ -217,6 +228,11 @@
             }
             .tools-grid {
                 grid-template-columns: 1fr;
+          .tool-name {
+        font-size: 1rem; /* 手机上适当缩小标题字号 */
+        }
+          .tool-desc {
+        font-size: 0.75rem; /* 手机上适当缩小描述文字字号 */
             }
         }
     </style>
