@@ -338,12 +338,11 @@
             grid.innerHTML = filtered.map((tool, idx) => `
    <div class="tool-card">
         <div class="card-header">
-            <img class="tool-icon-img" src="/images/${tool.iconFile}" alt="${tool.name} logo" onerror="this.src=/images/default-logo.png">
-            <a href="${tool.url}" class="tool-name" target="_blank">${tool.name}</a>
-        </div>
+            <img class="tool-icon-img" src="/images/${tool.iconFile}" alt="${tool.name} logo" onerror="this.src='/images/default-logo.png'">
+            </div>
         <div class="tool-desc">${tool.desc}</div>
         <div class="card-footer">
-            <a href="${tool.url}" class="visit-btn" target="_blank">访问官网 →</a>
+            <a href="${tool.url}" class="visit-btn" target="_blank">访问官网 </a>
             <button class="detail-btn" data-index="${idx}"> 查看介绍</button>
         </div>
     </div>
