@@ -338,7 +338,7 @@
             grid.innerHTML = filtered.map((tool, idx) => `
    <div class="tool-card">
         <div class="card-header">
-            <img class="tool-icon-img" src="/images/${tool.iconFile}" alt="${tool.name} logo" onerror="this.src='/images/default-logo.png'">
+            <img class="tool-icon-img" src="/images/${tool.iconFile}" alt="${tool.name} logo" onerror="this.src=/images/default-logo.png">
             <a href="${tool.url}" class="tool-name" target="_blank">${tool.name}</a>
         </div>
         <div class="tool-desc">${tool.desc}</div>
