@@ -262,7 +262,7 @@
     </footer>
 
     <script>
-        // 工具数据（已移除 iconFile 字段，因为不再需要图片）
+        // 工具数据
         const toolsData = [
             { name: "DeepSeek", category: "chat", desc: "深度求索AI助手，支持超长上下文和联网搜索，完全免费。", url: "https://chat.deepseek.com" },
             { name: "Midjourney", category: "image", desc: "顶尖AI绘画工具，以艺术感和细节著称。", url: "https://www.midjourney.com" },
@@ -277,13 +277,12 @@
             { name: "文心一言", category: "chat", desc: "百度研发的知识增强大语言模型。", url: "https://yiyan.baidu.com" },
             { name: "Kimi", category: "chat", desc: "月之暗面推出的AI助手，支持超长文本处理。", url: "https://kimi.moonshot.cn" },
             { name: "豆包", category: "chat", desc: "字节跳动推出的免费AI对话助手。", url: "https://www.doubao.com" }，
-    { name: "豆包", category: "chat", desc: "字节跳动推出的免费AI对话助手。", url: "https://www.doubao.com" },
-    { name: "Gemini", category: "chat", desc: "Google 研发的多模态AI模型家族，支持文本、图像、音频等复杂任务。", url: "https://gemini.google.com" },
-    { name: "腾讯元宝", category: "chat", desc: "腾讯混元大模型推出的AI助手，支持聊天、文档处理、联网搜索等。", url: "https://yuanbao.tencent.com" },
-    { name: "Grok", category: "chat", desc: "xAI公司推出的AI聊天机器人，知识新鲜，风格幽默，可直连X平台数据。", url: "https://grok.com" },
-    { name: "讯飞星火", category: "chat", desc: "科大讯飞推出的认知大模型，支持多轮对话、代码生成、知识问答。", url: "https://xinghuo.xfyun.cn" },
-    { name: "华为小艺", category: "chat", desc: "华为自研的智能语音助手，已接入盘古大模型，支持文本、语音交互。", url: "https://aistudio.huawei.com/xiaoyi" }
-        ];
+            { name: "Gemini", category: "chat", desc: "Google 研发的多模态AI模型家族，支持文本、图像、音频等复杂任务。", url: "https://gemini.google.com" },
+           { name: "腾讯元宝", category: "chat", desc: "腾讯混元大模型推出的AI助手，支持聊天、文档处理、联网搜索等。", url: "https://yuanbao.tencent.com" },
+           { name: "Grok", category: "chat", desc: "xAI公司推出的AI聊天机器人，知识新鲜，风格幽默，可直连X平台数据。", url: "https://grok.com" },
+           { name: "讯飞星火", category: "chat", desc: "科大讯飞推出的认知大模型，支持多轮对话、代码生成、知识问答。", url: "https://xinghuo.xfyun.cn" },
+           { name: "华为小艺", category: "chat", desc: "华为自研的智能语音助手，已接入盘古大模型，支持文本、语音交互。", url: "https://aistudio.huawei.com/xiaoyi" }，
+          ];
 
         let currentCategory = "all";
         let currentSearchTerm = "";
